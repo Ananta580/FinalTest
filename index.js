@@ -1,5 +1,10 @@
 var noOfRows = 0;
 var noOfCols = 0;
+
+// Storing buttons temporarily
+const addColButton = document.getElementById("b2");
+const addRowButton = document.getElementById("b3");
+
 function generateTable() {
   noOfRows = parseInt(document.getElementById("t1").value);
   noOfCols = parseInt(document.getElementById("t2").value);
@@ -9,10 +14,6 @@ function generateTable() {
     alert("Give a valid input to row & column.");
     return;
   }
-
-  // Storing buttons temporarily
-  const addColButton = document.getElementById("b2");
-  const addRowButton = document.getElementById("b3");
 
   // To generate table
   var table = document.createElement("table");
@@ -26,9 +27,7 @@ function generateTable() {
     row.setAttribute("id", "row" + i);
     for (var j = 0; j < noOfCols; j++) {
       var cell = row.insertCell();
-      cell.style.border = "1px solid black";
-      cell.style.padding = "10px 20px";
-      cell.textContent = "Cell " + i + ", " + j;
+      addCellStyle(cell, i, j);
     }
   }
 
@@ -46,9 +45,7 @@ function addRow() {
   row.setAttribute("id", "row" + noOfRows);
   for (var i = 0; i < noOfCols; i++) {
     var cell = row.insertCell();
-    cell.style.border = "1px solid black";
-    cell.style.padding = "10px 20px";
-    cell.textContent = "Cell " + noOfRows + ", " + i;
+    addCellStyle(cell, noOfRows, i);
   }
   noOfRows++;
 }
@@ -58,10 +55,17 @@ function addColumn() {
     var row = document.getElementById("row" + i);
     if (row) {
       var cell = row.insertCell();
-      cell.style.border = "1px solid black";
-      cell.style.padding = "10px 20px";
-      cell.textContent = "Cell " + i + ", " + noOfRows;
+      addCellStyle(cell, i, noOfRows);
     }
   }
   noOfCols++;
+}
+
+function addCellStyle(cell, row, col) {
+  cell.style.fontSize = "14px";
+  cell.style.border = "2px solid gray";
+  cell.style.backgroundColor = "#f4f4f4";
+  cell.style.padding = "10px 30px";
+  cell.innerHTML =
+    "Cell <b style='font-size:16px'>(" + row + "/" + col + ")</b>";
 }
