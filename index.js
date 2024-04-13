@@ -21,6 +21,7 @@ function generateTable() {
   // To generate table rows and columns
   for (var i = 0; i < noOfRows; i++) {
     var row = table.insertRow();
+    row.setAttribute("id", "row" + i);
     for (var j = 0; j < noOfCols; j++) {
       var cell = row.insertCell();
       cell.style.border = "1px solid black";
@@ -39,6 +40,7 @@ function generateTable() {
 function addRow() {
   var table = document.getElementById("dynamicTable");
   var row = table.insertRow();
+  row.setAttribute("id", "row" + noOfRows);
   for (var i = 0; i < noOfCols; i++) {
     var cell = row.insertCell();
     cell.style.border = "1px solid black";
@@ -48,5 +50,20 @@ function addRow() {
   noOfRows++;
 }
 
+function addColumn() {
+  var table = document.getElementById("dynamicTable");
+  for (var i = 0; i < noOfRows; i++) {
+    var row = document.getElementById("row" + i);
+    if (row) {
+      var cell = row.insertCell();
+      cell.style.border = "1px solid black";
+      cell.style.padding = "10px 20px";
+      cell.textContent = "Cell " + i + ", " + noOfRows;
+    }
+  }
+  noOfRows++;
+}
+
 document.getElementById("b1").addEventListener("onClick", generateTable);
+document.getElementById("b2").addEventListener("onClick", addColumn);
 document.getElementById("b3").addEventListener("onClick", addRow);
