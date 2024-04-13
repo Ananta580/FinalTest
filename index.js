@@ -4,11 +4,13 @@ function generateTable() {
   noOfRows = parseInt(document.getElementById("t1").value);
   noOfCols = parseInt(document.getElementById("t2").value);
 
+  // Added validation
   if (!(parseInt(noOfRows) > 0 && parseInt(noOfCols) > 0)) {
     alert("Give a valid input to row & column.");
     return;
   }
 
+  // Storing buttons temporarily
   const addColButton = document.getElementById("b2");
   const addRowButton = document.getElementById("b3");
 
@@ -30,6 +32,7 @@ function generateTable() {
     }
   }
 
+  // Clear content and append buttons back
   document.body.innerHTML = "";
   document.body.appendChild(table);
   addColButton.style.marginRight = "10px";
@@ -51,7 +54,6 @@ function addRow() {
 }
 
 function addColumn() {
-  var table = document.getElementById("dynamicTable");
   for (var i = 0; i < noOfRows; i++) {
     var row = document.getElementById("row" + i);
     if (row) {
@@ -61,7 +63,7 @@ function addColumn() {
       cell.textContent = "Cell " + i + ", " + noOfRows;
     }
   }
-  noOfRows++;
+  noOfCols++;
 }
 
 document.getElementById("b1").addEventListener("onClick", generateTable);
