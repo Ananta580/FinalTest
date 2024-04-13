@@ -2,6 +2,11 @@ function generateTable() {
   var noOfRows = parseInt(document.getElementById("t1").value);
   var noOfCols = parseInt(document.getElementById("t2").value);
 
+  if (!(parseInt(noOfRows) > 0 && parseInt(noOfCols) > 0)) {
+    alert("Give a valid input to row & column.");
+    return;
+  }
+
   const addColButton = document.getElementById("b2");
   const addRowButton = document.getElementById("b3");
 
@@ -16,7 +21,7 @@ function generateTable() {
       var cell = row.insertCell();
       cell.style.border = "1px solid black";
       cell.style.padding = "10px 20px";
-      cell.textContent = "Cell " + (i + 1) + ", " + (j + 1);
+      cell.textContent = "Cell " + i + ", " + j;
     }
   }
 
@@ -26,4 +31,4 @@ function generateTable() {
   document.body.appendChild(addRowButton);
 }
 
-document.getElementById("b1").addEventListener("click", generateTable);
+document.getElementById("b1").addEventListener("onClick", generateTable);
