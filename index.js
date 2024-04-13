@@ -65,7 +65,3 @@ function addColumn() {
   }
   noOfCols++;
 }
-
-document.getElementById("b1").addEventListener("onClick", generateTable);
-document.getElementById("b2").addEventListener("onClick", addColumn);
-document.getElementById("b3").addEventListener("onClick", addRow);
